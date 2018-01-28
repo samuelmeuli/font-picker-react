@@ -30,6 +30,8 @@ npm install font-picker-react
 Then add the **`<FontPicker />` component** somewhere in your React project:
 
 ```jsx
+import FontPicker from 'font-picker-react';
+
 <FontPicker
   apiKey="YOUR_API_KEY" // Google API key
   defaultFont={'Open Sans'}
