@@ -9,6 +9,10 @@ import FontPickerUI from './FontPickerUI';
  * 			 https://developers.google.com/fonts/docs/developer_api)
  * @prop {string} defaultFont - Font that is selected on initialization (default: 'Open Sans')
  * @prop {Object} options - Object with additional (optional) parameters:
+ *   @prop {string} name - If you have multiple font pickers on your site, you need to give them
+ *         unique names (which may only consist of letters and digits). These names must also be
+ *         appended to the font picker's ID and the .apply-font class name.
+ *         Example: if { name: 'main' }, then use #font-picker-main and .apply-font-main
  * 	 @prop {string[]} families - If only specific fonts shall appear in the list, specify their
  * 	 			 names in an array
  * 	 @prop {string[]} categories - Array of font categories
@@ -93,6 +97,7 @@ export default class FontPicker extends Component {
 				downloadPreviews={downloadIndex => this.fontHandler.downloadPreviews(downloadIndex)}
 				fontList={this.state.fontList}
 				loadingStatus={this.state.loadingStatus}
+				name={this.fontHandler.name}
 				selectFont={this.selectFont}
 			/>
 		);

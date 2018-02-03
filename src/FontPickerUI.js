@@ -100,7 +100,7 @@ export default class FontPickerUI extends Component {
 
 		return (
 			<div
-				id="font-picker"
+				id={`font-picker${this.props.name}`}
 				title={this.props.loadingStatus === 'error' ?
 					'Error trying to fetch the list of available fonts' : ''
 				}
@@ -108,8 +108,7 @@ export default class FontPickerUI extends Component {
 				<a
 					role="button"
 					tabIndex="0"
-					id="dropdown-button"
-					className={this.state.expanded ? 'expanded' : ''}
+					className={`dropdown-button ${this.state.expanded ? 'expanded' : ''}`}
 					onClick={this.toggleExpanded}
 					onKeyPress={this.toggleExpanded}
 				>

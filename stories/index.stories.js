@@ -10,6 +10,17 @@ const sampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Qua
 
 
 storiesOf('FontPicker', module)
+	.add('GitHub demo', () => (
+		<div className="storybook-github">
+			<FontPicker
+				apiKey={apiKey}
+				defaultFont="Open Sans"
+			/>
+			<p className="apply-font">
+				The font will be applied to this text.
+			</p>
+		</div>
+	))
 	.add('Default font from Google Fonts', () => (
 		<div>
 			<FontPicker
@@ -58,14 +69,23 @@ storiesOf('FontPicker', module)
 			</p>
 		</div>
 	))
-	.add('GitHub demo', () => (
-		<div className="storybook-github">
+	.add('Multiple font pickers', () => (
+		<div>
 			<FontPicker
 				apiKey={apiKey}
 				defaultFont="Open Sans"
+				options={{ name: '1' }}
 			/>
-			<p className="apply-font">
-				The font will be applied to this text.
+			<FontPicker
+				apiKey={apiKey}
+				defaultFont="Roboto"
+				options={{ name: '2' }}
+			/>
+			<p className="apply-font-1">
+				The first font will be applied to this text.
+			</p>
+			<p className="apply-font-2">
+				The second font will be applied to this text.
 			</p>
 		</div>
 	));
