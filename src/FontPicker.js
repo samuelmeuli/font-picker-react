@@ -34,8 +34,8 @@ export default class FontPicker extends Component {
 			activeFont: {
 				family: this.props.defaultFont
 			},
-			error: false, // indicates whether fetching font list has been successful
-			fontList: []
+			fontList: [],
+			loadingStatus: 'loading'
 		};
 
 		// initialize FontHandler object and generate the font list
@@ -51,14 +51,15 @@ export default class FontPicker extends Component {
 				// on font list load: save it to component state
 				this.setState({
 					activeFont: this.fontHandler.activeFont,
-					fontList: this.fontHandler.fonts
+					fontList: this.fontHandler.fonts,
+					loadingStatus: 'finished'
 				});
 			})
 			.catch((err) => {
 				console.error('Error trying to fetch the list of available fonts');
 				console.error(err);
 				this.setState({
-					error: true
+					loadingStatus: 'error'
 				});
 			});
 
@@ -90,8 +91,8 @@ export default class FontPicker extends Component {
 			<FontPickerUI
 				activeFont={this.state.activeFont}
 				downloadPreviews={downloadIndex => this.fontHandler.downloadPreviews(downloadIndex)}
-				error={this.state.error}
 				fontList={this.state.fontList}
+				loadingStatus={this.state.loadingStatus}
 				selectFont={this.selectFont}
 			/>
 		);

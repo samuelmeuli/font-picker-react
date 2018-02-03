@@ -24,7 +24,7 @@
 		"prepush": "npm run lint"
 	},
 	"dependencies": {
-		"font-picker": "^1.0.0"
+		"font-picker": "^1.1.0"
 	},
 	"peerDependencies": {
 		"react": "^16.0.0"

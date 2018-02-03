@@ -101,7 +101,9 @@ export default class FontPickerUI extends Component {
 		return (
 			<div
 				id="font-picker"
-				title={this.props.error ? 'Error trying to fetch the list of available fonts' : ''}
+				title={this.props.loadingStatus === 'error' ?
+					'Error trying to fetch the list of available fonts' : ''
+				}
 			>
 				<a
 					role="button"
@@ -112,9 +114,9 @@ export default class FontPickerUI extends Component {
 					onKeyPress={this.toggleExpanded}
 				>
 					<p>{this.props.activeFont.family}</p>
-					<p>{this.props.error ? '⚠' : '▾'}</p>
+					<div className={`dropdown-icon ${this.props.loadingStatus}`} />
 				</a>
-				{this.props.error || fontList}
+				{this.props.loadingStatus === 'finished' && fontList}
 			</div>
 		);
 	}
