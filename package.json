@@ -19,7 +19,7 @@
 		"start": "rollup -c --watch",
 		"build": "rollup -c",
 		"storybook": "start-storybook -p 6006",
-		"lint": "eslint --ext .js src stories",
+		"lint": "eslint .",
 		"precommit": "npm run lint",
 		"prepush": "npm run lint"
 	},
