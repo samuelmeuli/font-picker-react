@@ -13,7 +13,7 @@
 _This is the React component for the [**Font Picker**](https://github.com/smeuli/font-picker) package._
 
 <p align="center">
-  <img src=".github/demo.gif" width=800 alt="Demo">
+  <img src=".github/demo.gif" width=700 alt="Demo">
 </p>
 
 
