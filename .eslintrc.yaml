@@ -1,0 +1,40 @@
+extends: airbnb
+
+env:
+  browser: true
+  node: true
+
+rules:
+  # Default rules
+  comma-dangle:
+    - 2
+    - never
+  indent:
+    - 2
+    - tab
+  no-tabs: 0
+  object-curly-newline: 0
+  object-curly-spacing:
+    - 2
+    - always
+    - objectsInObjects: false
+
+  # Default React rules
+  react/jsx-filename-extension:
+    - 2
+    - extensions:
+      - .js
+  react/jsx-indent:
+    - 2
+    - tab
+  react/jsx-indent-props:
+    - 2
+    - tab
+
+  # Project-specific rules
+  no-console: 0
+  import/no-extraneous-dependencies:
+    - 2
+    - devDependencies: true  # ignore storybook-react
+  jsx-a11y/anchor-is-valid: 0
+  react/prop-types: 0

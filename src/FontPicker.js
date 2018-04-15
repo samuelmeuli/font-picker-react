@@ -30,7 +30,6 @@ import FontPickerUI from './FontPickerUI';
  * 			 font and its stylesheet finishes downloading
  */
 export default class FontPicker extends Component {
-
 	constructor(props) {
 		super(props);
 

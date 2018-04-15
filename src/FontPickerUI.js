@@ -5,7 +5,6 @@ import React, { Component } from 'react';
  * Font picker presentational component
  */
 export default class FontPickerUI extends Component {
-
 	constructor(props) {
 		super(props);
 
@@ -62,8 +61,7 @@ export default class FontPickerUI extends Component {
 		if (this.state.expanded) {
 			this.setState({ expanded: false });
 			document.removeEventListener('click', this.closeEventListener);
-		}
-		else {
+		} else {
 			this.setState({ expanded: true });
 			document.addEventListener('click', this.closeEventListener);
 		}
