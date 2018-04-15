@@ -16,9 +16,10 @@
 	"homepage": "https://smeuli.github.io/font-picker",
 	"license": "MIT",
 	"scripts": {
-		"start": "rollup -c --watch",
+		"start": "npm-run-all build --parallel start:*",
+		"start:rollup": "rollup -c --watch",
+		"start:storybook": "start-storybook -p 6006",
 		"build": "rollup -c",
-		"storybook": "start-storybook -p 6006",
 		"lint": "eslint .",
 		"precommit": "npm run lint",
 		"prepush": "npm run lint"
@@ -44,6 +45,7 @@
 		"eslint-plugin-jsx-a11y": "^6.0.2",
 		"eslint-plugin-react": "^7.7.0",
 		"husky": "^0.14.3",
+		"npm-run-all": "^4.1.2",
 		"react": "^16.0.0",
 		"react-dom": "^16.0.0",
 		"rollup": "^0.57.1",
