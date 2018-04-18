@@ -1,14 +1,17 @@
 {
 	"name": "font-picker-react",
 	"version": "1.3.0",
-	"description": "Font picker component for previewing, selecting, and downloading Google Fonts",
+	"description": "Font selector component for Google Fonts",
 	"keywords": [
 		"fonts",
 		"google fonts",
 		"selector",
+		"picker",
+		"component",
+		"preview",
 		"download",
 		"react",
-		"component"
+		"react-component"
 	],
 	"main": "lib/FontPicker.js",
 	"author": "Samuel Meuli <dev@samuelmeuli.com>",
