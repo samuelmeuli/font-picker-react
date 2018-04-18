@@ -36,5 +36,4 @@ rules:
   import/no-extraneous-dependencies:
     - 2
     - devDependencies: true  # ignore storybook-react
-  jsx-a11y/anchor-is-valid: 0
   react/prop-types: 0
