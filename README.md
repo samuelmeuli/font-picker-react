@@ -13,7 +13,7 @@
 _This is the React component for the [**Font Picker**](https://github.com/smeuli/font-picker) package._
 
 <p align="center">
-    <img src=".github/demo.gif" width=700 alt="Demo">
+  <img src=".github/demo.gif" width=700 alt="Demo">
 </p>
 
 
@@ -37,25 +37,25 @@ import React, { Component } from 'react';
 import FontPicker from 'font-picker-react';
 
 export default class ExampleComponent extends Component {
-    constructor() {
-        super();
-        this.state = { activeFont: 'Open Sans' };
-    }
+  constructor() {
+    super();
+    this.state = { activeFont: 'Open Sans' };
+  }
 
-    render() {
-        return (
-            <div>
-                <FontPicker
-                    apiKey="YOUR_API_KEY"
-                    activeFont={this.state.activeFont}
-                    onChange={nextFont => this.setState({ activeFont: nextFont.family })}
-                />
-                <p className="apply-font">
-                    The font will be applied to this text.
-                </p>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <FontPicker
+          apiKey="YOUR_API_KEY"
+          activeFont={this.state.activeFont}
+          onChange={nextFont => this.setState({ activeFont: nextFont.family })}
+        />
+        <p className="apply-font">
+          The font will be applied to this text.
+        </p>
+      </div>
+    );
+  }
 }
 ```
 
