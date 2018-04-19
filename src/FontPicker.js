@@ -184,7 +184,7 @@ export default class FontPicker extends Component {
 
 		// render font picker button and attach font list to it
 		return (
-			<div id={`font-picker${this.fontManager.name}`} title={this.state.errorText}>
+			<div id={`font-picker${this.fontManager.options.name}`} title={this.state.errorText}>
 				<button
 					className={`dropdown-button ${this.state.expanded ? 'expanded' : ''}`}
 					onClick={this.toggleExpanded}
