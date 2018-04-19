@@ -190,7 +190,7 @@ export default class FontPicker extends Component {
 					onClick={this.toggleExpanded}
 					onKeyPress={this.toggleExpanded}
 				>
-					<p>{this.state.activeFont}</p>
+					<p className="dropdown-font-name">{this.state.activeFont}</p>
 					<div className={`dropdown-icon ${this.state.loadingStatus}`} />
 				</button>
 				{this.state.loadingStatus === 'finished' && fontList}
