@@ -1,16 +1,15 @@
 # Font Picker for React
 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/smeuli/font-picker/blob/master/LICENSE)
-[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/smeuli/font-picker/pulls)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/samuelmeuli/font-picker/blob/master/LICENSE)
 
 **A simple, customizable font picker allowing users to preview, select, and use Google Fonts on your website.**
 
 * Automatic font download and generation of the required CSS styles
 * Efficient font previews (previews are loaded dynamically and full fonts are only downloaded on selection)
 
-→ **[Demo](https://smeuli.github.io/font-picker)**
+→ **[Demo](https://samuelmeuli.github.io/font-picker)**
 
-_This is the React component for the [**Font Picker**](https://github.com/smeuli/font-picker) package._
+_This is the React component for the [**Font Picker**](https://github.com/samuelmeuli/font-picker) package._
 
 <p align="center">
   <img src=".github/demo.gif" width=700 alt="Demo">
