@@ -20,6 +20,7 @@ rules:
     - objectsInObjects: false
 
   # Default React rules
+  react/button-has-type: 2
   react/jsx-filename-extension:
     - 2
     - extensions:

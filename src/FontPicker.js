@@ -162,6 +162,7 @@ export default class FontPicker extends Component {
 							return (
 								<li key={font.family}>
 									<button
+										type="button"
 										className={`font-${fontId} ${isActive ? 'active-font' : ''}`}
 										onClick={() => {
 											this.toggleExpanded();
@@ -186,6 +187,7 @@ export default class FontPicker extends Component {
 		return (
 			<div id={`font-picker${this.fontManager.options.name}`} title={this.state.errorText}>
 				<button
+					type="button"
 					className={`dropdown-button ${this.state.expanded ? 'expanded' : ''}`}
 					onClick={this.toggleExpanded}
 					onKeyPress={this.toggleExpanded}
