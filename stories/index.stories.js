@@ -1,31 +1,35 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import ExampleComponent from './ExampleComponent';
+import OnePicker from './picker-wrappers/OnePicker';
+import TwoPickers from './picker-wrappers/TwoPickers';
 
 import './style.css';
 
 
 storiesOf('FontPicker', module)
 	.add('GitHub demo', () => (
-		<ExampleComponent
+		<OnePicker
 			defaultFont="Open Sans"
 		/>
 	))
 	.add('Local default font', () => (
-		<ExampleComponent
+		<OnePicker
 			defaultFont="Arial"
-			fontPickerOptions={{ limit: 50 }}
+			options={{ name: '2', limit: 50 }}
 		/>
 	))
 	.add('Non-existent default font', () => (
-		<ExampleComponent
+		<OnePicker
 			defaultFont="asdf"
-			fontPickerOptions={{ limit: 50 }}
+			options={{ name: '3', limit: 50 }}
 		/>
 	))
 	.add('Custom font variants', () => (
-		<ExampleComponent
+		<OnePicker
 			defaultFont="Barlow"
-			fontPickerOptions={{ variants: ['900italic'] }}
+			options={{ name: '4', variants: ['900italic'] }}
 		/>
+	))
+	.add('Two font pickers', () => (
+		<TwoPickers />
 	));
