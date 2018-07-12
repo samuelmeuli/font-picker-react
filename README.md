@@ -1,7 +1,5 @@
 # Font Picker for React
 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/samuelmeuli/font-picker/blob/master/LICENSE)
-
 **A simple, customizable font picker allowing users to preview, select, and use Google Fonts on your website.**
 
 * Automatic font download and generation of the required CSS styles
@@ -88,4 +86,4 @@ To build the project locally, do the following:
 
 * `git clone`
 * `npm install`
-* `npm start` to generate the library bundle using [Rollup](https://github.com/rollup/rollup) and and start the [Storybook](https://github.com/storybooks/storybook) for testing the component interactively
+* `npm start` to generate the library bundle using [Rollup](https://github.com/rollup/rollup) and and start the [Storybook](https://github.com/storybooks/storybook) for testing the component interactively (`localhost:3000`)
