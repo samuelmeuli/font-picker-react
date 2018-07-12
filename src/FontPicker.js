@@ -40,6 +40,13 @@ export default class FontPicker extends Component {
 			loadingStatus: 'loading' // possible values: 'loading', 'finished', 'error'
 		};
 
+		// Determine selector suffix from font picker's name
+		if (this.props.options && this.props.options.name) {
+			this.pickerSuffix = `-${this.props.options.name}`;
+		} else {
+			this.pickerSuffix = '';
+		}
+
 		// initialize FontManager object and generate the font list
 		this.fontManager = new FontManager(
 			this.props.apiKey,
@@ -163,7 +170,7 @@ export default class FontPicker extends Component {
 								<li key={font.family}>
 									<button
 										type="button"
-										className={`font-${fontId} ${isActive ? 'active-font' : ''}`}
+										className={`font-${fontId}${this.pickerSuffix} ${isActive ? 'active-font' : ''}`}
 										onClick={() => {
 											this.toggleExpanded();
 											this.props.onChange(font);
@@ -185,7 +192,7 @@ export default class FontPicker extends Component {
 
 		// render font picker button and attach font list to it
 		return (
-			<div id={`font-picker${this.fontManager.options.name}`} title={this.state.errorText}>
+			<div id={`font-picker${this.pickerSuffix}`} title={this.state.errorText}>
 				<button
 					type="button"
 					className={`dropdown-button ${this.state.expanded ? 'expanded' : ''}`}
