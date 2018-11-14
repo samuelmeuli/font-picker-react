@@ -1,12 +1,14 @@
 # OS
 .DS_Store
-Thumbs.db
 
-# WebStorm (IDE)
-.idea/
+# Logs
+*.log
 
 # Node
 node_modules/
 
-# build output
+# Rollup
 lib/
+
+# Storybook
+.cache/

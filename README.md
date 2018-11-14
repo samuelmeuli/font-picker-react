@@ -85,5 +85,5 @@ The following **props** can be passed to the `FontPicker` component:
 To build the project locally, do the following:
 
 * `git clone`
-* `npm install`
-* `npm start` to generate the library bundle using [Rollup](https://github.com/rollup/rollup) and and start the [Storybook](https://github.com/storybooks/storybook) for testing the component interactively (`localhost:3000`)
+* `yarn install`
+* `yarn start` to generate the library bundle using [Rollup](https://github.com/rollup/rollup) and and start the [Storybook](https://github.com/storybooks/storybook) for testing the component interactively (`localhost:3000`)

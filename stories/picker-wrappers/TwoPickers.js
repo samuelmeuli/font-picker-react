@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FontPicker from '../../lib/FontPicker';
+import FontPicker from '../../lib/FontPicker.es';
 
 
 export default class TwoPickers extends Component {

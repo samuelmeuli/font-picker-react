@@ -1,17 +1,26 @@
 import babel from 'rollup-plugin-babel';
 
+import pkg from './package.json';
+
 
 export default {
 	input: 'src/FontPicker',
-	output: {
-		file: 'lib/FontPicker.js',
-		format: 'cjs'
-	},
+	output: [
+		{
+			file: pkg.main,
+			format: 'cjs',
+			sourcemap: true
+		},
+		{
+			file: pkg.module,
+			format: 'es',
+			sourcemap: true
+		}
+	],
 	external: ['react', 'font-picker'],
 	plugins: [
 		babel({
-			exclude: 'node_modules/**',
-			plugins: ['external-helpers']
+			exclude: 'node_modules/**'
 		})
 	]
 };
