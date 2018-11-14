@@ -3536,10 +3536,10 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.1"
     readable-stream "^2.0.4"
 
-font-picker@^2.0.6:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/font-picker/-/font-picker-2.0.6.tgz#6e41ddc5b63c741f6a60e4c78ccde2ba401bd5ca"
-  integrity sha512-qHBJNach/kwPgtvWQjv08gU/SHQQTUsNis15T/ofh42cpqnFT/IhTISizHmYWQV0r/bTdmWiDW8xwvTv0OT+vg==
+font-picker@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/font-picker/-/font-picker-2.1.0.tgz#ed545c8b7275fd47f3055e6f5576a8d2a517cbca"
+  integrity sha512-EOBiflfnrIdwcBNoOSLGVzCG6MU8CNGBe0rc1Q19b8BlcAQnq+IQEa2dWFInubl0a/Z8CnTN8CYQCI4yPWIipg==
 
 for-in@^1.0.1, for-in@^1.0.2:
   version "1.0.2"

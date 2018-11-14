@@ -29,7 +29,7 @@
 		"lint": "eslint ."
 	},
 	"dependencies": {
-		"font-picker": "^2.0.6"
+		"font-picker": "^2.1.0"
 	},
 	"peerDependencies": {
 		"react": "^16.3.1"
