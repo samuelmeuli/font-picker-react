@@ -2,6 +2,7 @@
 
 **A simple, customizable font picker allowing users to preview, select, and use Google Fonts on your website.**
 
+* Simple setup
 * Automatic font download and generation of the required CSS styles
 * Efficient font previews (previews are loaded dynamically and full fonts are only downloaded on selection)
 
@@ -69,21 +70,23 @@ When the user selects a font, it will automatically be downloaded and applied to
 The following **props** can be passed to the `FontPicker` component:
 
 * **`apiKey` (required)**: Google API key (can be generated [here](https://developers.google.com/fonts/docs/developer_api#APIKey))
-* **`activeFont`**: Font that should be selected in the font picker and applied to the text (default: `'Open Sans'`). Must be stored in component state, and be updated using an `onChange` listener
-* **`options`**: Object with additional (optional) parameters:
-  * **`name`**: If you have multiple font pickers on your site, you need to give them unique names (which may only consist of letters and digits). These names must also be appended to the font picker's ID and the `.apply-font` class name; e.g. if `{ name: 'main' }`, use `#font-picker-main` and `.apply-font-main`
+* **`defaultFont`**: Font that is selected on initialization (default: `'Open Sans'`)
+* **`options`**: Object with additional optional parameters:
+  * **`name`**: If you have multiple font pickers on your site, you need to give them unique names (which may only consist of letters and digits). These names must also be appended to the font picker's ID and the `.apply-font` class name. Example: If `options = { name: 'main' }`, use `#font-picker-main` and `.apply-font-main`
   * **`families`**: If only specific fonts shall appear in the list, specify their names in an array (default: all font families)
   * **`categories`**: Array of font categories – possible values: `'sans-serif', 'serif', 'display', handwriting', 'monospace'` (default: all categories)
-  * **`variants`**: Array of variants which the fonts must include and which will be downloaded; the first variant in the array will become the default variant (and will be used in the font picker and the `.apply-font` class); e.g. `['regular', 'italic', '700', '700italic']` (default: `['regular']`)
+  * **`variants`**: Array of variants which the fonts must include and which will be downloaded; the first variant in the array will become the default variant and will be used in the font picker and the `.apply-font` class. Example: `['regular', 'italic', '700', '700italic']` (default: `['regular']`)
   * **`limit`**: Maximum number of fonts to be displayed in the list (the least popular fonts will be omitted; default: `100`)
   * **`sort`**: Sorting attribute for the font list – possible values: `'alphabetical'` (default), `'popularity'`
-* **`onChange`**: Function which is executed whenever the user changes the active font and its stylesheet finishes downloading
+* **`onChange`**: Function which is executed when the user changes the active font and its stylesheet has finished downloading
 
 
-## Contributing
+## Development
 
 To build the project locally, do the following:
 
 * `git clone`
 * `yarn install`
 * `yarn start` to generate the library bundle using [Rollup](https://github.com/rollup/rollup) and and start the [Storybook](https://github.com/storybooks/storybook) for testing the component interactively (`localhost:3000`)
+
+Suggestions and contributions are always welcome! Please first discuss changes via issue before submitting a pull request.

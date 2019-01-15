@@ -4,30 +4,7 @@ import { FontManager } from 'font-picker';
 
 /**
  * React interface for the font picker
- * @prop {string} apiKey (required) - Google API key
- * @prop {string} activeFont - Font that should be selected in the font picker and applied to the
- * text (default: 'Open Sans'). Must be stored in component state, and be updated using an onChange
- * listener. See README.md for an example.
- * @prop {Object} options - Object with additional (optional) parameters:
- *   @prop {string} name - If you have multiple font pickers on your site, you need to give them
- *   unique names (which may only consist of letters and digits). These names must also be appended
- *   to the font picker's ID and the .apply-font class name.
- *   Example: If { name: 'main' }, use #font-picker-main and .apply-font-main
- *   @prop {string[]} families - If only specific fonts shall appear in the list, specify their
- *   names in an array
- *   @prop {string[]} categories - Array of font categories
- *   Possible values: 'sans-serif', 'serif', 'display', 'handwriting', 'monospace' (default: all
- *   categories)
- *   @prop {string[]} variants - Array of variants which the fonts must include and which will be
- *   downloaded; the first variant in the array will become the default variant (and will be used
- *   in the font picker and the .apply-font class)
- *   Example: ['regular', 'italic', '700', '700italic'] (default: ['regular'])
- *   @prop {number} limit - Maximum number of fonts to be displayed in the list (the least popular
- *   fonts will be omitted; default: 100)
- *   @prop {string} sort - Sorting attribute for the font list
- *   Possible values: 'alphabetical' (default), 'popularity'
- * @prop {function} onChange - Function which is executed whenever the user changes the active font
- * and its stylesheet finishes downloading
+ * @see README.md
  */
 export default class FontPicker extends Component {
 	constructor(props) {
