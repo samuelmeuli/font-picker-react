@@ -29,7 +29,8 @@
 		"lint": "eslint ."
 	},
 	"dependencies": {
-		"font-picker": "^2.1.0"
+		"font-picker": "^2.1.0",
+		"lodash.throttle": "^4.1.1"
 	},
 	"peerDependencies": {
 		"react": "^16.3.1"

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import throttle from 'lodash.throttle';
 import { FontManager } from 'font-picker';
+
+const THROTTLE_INTERVAL = 250;
 
 
 /**
@@ -49,9 +52,10 @@ export default class FontPicker extends Component {
 			});
 
 		// function bindings
-		this.setActiveFont = this.setActiveFont.bind(this);
 		this.onClose = this.onClose.bind(this);
 		this.onScroll = this.onScroll.bind(this);
+		this.setActiveFont = this.setActiveFont.bind(this);
+		this.downloadPreviews = throttle(this.downloadPreviews.bind(this), THROTTLE_INTERVAL);
 		this.toggleExpanded = this.toggleExpanded.bind(this);
 	}
 
@@ -85,12 +89,11 @@ export default class FontPicker extends Component {
 	}
 
 	/**
-	 * Download the font previews for all visible font entries and the five after them
+	 * Scroll event handler
 	 */
 	onScroll(e) {
-		const elementHeight = e.target.scrollHeight / this.fontManager.fonts.length;
-		const downloadIndex = Math.ceil((e.target.scrollTop + e.target.clientHeight) / elementHeight);
-		this.fontManager.downloadPreviews(downloadIndex + 5);
+		e.persist();
+		this.downloadPreviews(e);
 	}
 
 	/**
@@ -114,6 +117,16 @@ export default class FontPicker extends Component {
 				loadingStatus: 'finished'
 			});
 		}
+	}
+
+	/**
+	 * Download the font previews for all visible font entries and the five after them
+	 */
+	downloadPreviews(e) {
+		console.log('dl');
+		const elementHeight = e.target.scrollHeight / this.fontManager.fonts.length;
+		const downloadIndex = Math.ceil((e.target.scrollTop + e.target.clientHeight) / elementHeight);
+		this.fontManager.downloadPreviews(downloadIndex + 5);
 	}
 
 	/**
