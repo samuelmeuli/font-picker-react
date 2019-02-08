@@ -13,6 +13,7 @@ rules:
   import/no-extraneous-dependencies:
     - error
     - devDependencies:
+        - "rollup.config.js"
         - ".storybook/**/*.js"
         - "stories/**/*.js"
   react/require-default-props: off
