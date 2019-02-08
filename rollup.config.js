@@ -1,7 +1,5 @@
 import babel from 'rollup-plugin-babel';
-
 import pkg from './package.json';
-
 
 export default {
 	input: 'src/FontPicker',
@@ -15,7 +13,7 @@ export default {
 			format: 'es'
 		}
 	],
-	external: ['react', 'font-picker'],
+	external: ['font-picker', 'prop-types', 'react'],
 	plugins: [
 		babel({
 			exclude: 'node_modules/**'
