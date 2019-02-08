@@ -1,9 +1,22 @@
-import React, { Component } from 'react';
-import throttle from 'lodash.throttle';
 import { FontManager } from 'font-picker';
+import throttle from 'lodash.throttle';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
+const propTypes = {
+	apiKey: PropTypes.string.isRequired,
+	activeFont: PropTypes.string.isRequired,
+	onChange: PropTypes.func.isRequired,
+	options: PropTypes.shape({
+		name: PropTypes.string,
+		families: PropTypes.arrayOf(PropTypes.string),
+		categories: PropTypes.arrayOf(PropTypes.string),
+		variants: PropTypes.arrayOf(PropTypes.string),
+		limit: PropTypes.number,
+		sort: PropTypes.oneOf(['alphabetical', 'popularity'])
+	})
+};
 const THROTTLE_INTERVAL = 250;
-
 
 /**
  * React interface for the font picker
@@ -33,7 +46,8 @@ export default class FontPicker extends Component {
 			this.props.activeFont,
 			this.props.options
 		);
-		this.fontManager.init()
+		this.fontManager
+			.init()
 			.then(() => {
 				// font list has finished loading
 				this.setState({
@@ -41,7 +55,7 @@ export default class FontPicker extends Component {
 					loadingStatus: 'finished'
 				});
 			})
-			.catch((err) => {
+			.catch(err => {
 				// error while loading font list
 				this.setState({
 					errorText: 'Error trying to fetch the list of available fonts',
@@ -151,30 +165,28 @@ export default class FontPicker extends Component {
 		if (this.state.loadingStatus === 'finished') {
 			fontList = (
 				<ul className={this.state.expanded ? 'expanded' : ''} onScroll={this.onScroll}>
-					{
-						this.fontManager.fonts.map((font) => {
-							const isActive = font.family === this.state.activeFont;
-							const fontId = font.family.replace(/\s+/g, '-').toLowerCase();
-							return (
-								<li key={font.family}>
-									<button
-										type="button"
-										className={`font-${fontId}${this.pickerSuffix} ${isActive ? 'active-font' : ''}`}
-										onClick={() => {
-											this.toggleExpanded();
-											this.props.onChange(font);
-										}}
-										onKeyPress={() => {
-											this.toggleExpanded();
-											this.props.onChange(font);
-										}}
-									>
-										{font.family}
-									</button>
-								</li>
-							);
-						})
-					}
+					{this.fontManager.fonts.map(font => {
+						const isActive = font.family === this.state.activeFont;
+						const fontId = font.family.replace(/\s+/g, '-').toLowerCase();
+						return (
+							<li key={font.family}>
+								<button
+									type="button"
+									className={`font-${fontId}${this.pickerSuffix} ${isActive ? 'active-font' : ''}`}
+									onClick={() => {
+										this.toggleExpanded();
+										this.props.onChange(font);
+									}}
+									onKeyPress={() => {
+										this.toggleExpanded();
+										this.props.onChange(font);
+									}}
+								>
+									{font.family}
+								</button>
+							</li>
+						);
+					})}
 				</ul>
 			);
 		}
@@ -196,3 +208,5 @@ export default class FontPicker extends Component {
 		);
 	}
 }
+
+FontPicker.propTypes = propTypes;
