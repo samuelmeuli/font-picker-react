@@ -1,11 +1,12 @@
 .wrapper {
 	display: flex;
-	align-items: center;
-	padding: 100px;
+	align-items: flex-start;
+	height: 250px;
+	padding: 100px 100px 0;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica", "Arial",
 		sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 [class^="apply-font"] {
-	margin-left: 50px;
+	margin: 5px 0 0 50px;
 }

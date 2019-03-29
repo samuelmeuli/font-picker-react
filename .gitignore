@@ -1,14 +1,2 @@
-# OS
-.DS_Store
-
-# Logs
-*.log
-
-# Node
+dist/
 node_modules/
-
-# Rollup
-lib/
-
-# Storybook
-.cache/

@@ -1,9 +1,9 @@
 root: true
 
 extends:
-  - airbnb
-  - "@samuelmeuli/eslint-config/react"
-  - prettier
+  - "@samuelmeuli/eslint-config/react-typescript"
+  - "prettier"
+  - "prettier/@typescript-eslint"
 
 env:
   browser: true
@@ -13,7 +13,10 @@ rules:
   import/no-extraneous-dependencies:
     - error
     - devDependencies:
-        - "rollup.config.js"
         - ".storybook/**/*.js"
-        - "stories/**/*.js"
-  react/require-default-props: off
+        - "rollup.config.js"
+        - "stories/**/*.jsx"
+  react/jsx-sort-default-props: off
+
+  # Broken rule
+  import/no-unresolved: off

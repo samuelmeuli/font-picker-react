@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"declaration": true,
+		"declarationDir": "./dist/js/",
+		"declarationMap": true,
+		"forceConsistentCasingInFileNames": true,
+		"jsx": "react",
+		"module": "es6",
+		"moduleResolution": "node",
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"outDir": "./dist/js/",
+		"removeComments": true,
+		"sourceMap": true,
+		"strictBindCallApply": true,
+		"strictFunctionTypes": true,
+		"target": "es5"
+	},
+	"include": ["src/**/*"]
+}
