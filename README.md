@@ -21,10 +21,10 @@ To be able to access the API, you'll need to [generate a Google Fonts API key](h
 
 ### 1. Setup
 
-Install the `font-picker` package using NPM:
+Install the `font-picker-react` package using NPM:
 
 ```sh
-npm install font-picker
+npm install font-picker-react
 ```
 
 ### 2. Displaying the font picker
