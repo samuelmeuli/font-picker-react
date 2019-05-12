@@ -113,11 +113,13 @@ export default class FontPicker extends PureComponent<Props, State> {
 	 * After every component update, check whether the activeFontFamily prop has changed. If so,
 	 * call this.setActiveFontFamily with the new font
 	 */
-	componentDidUpdate(): void {
+	componentDidUpdate(prevProps: Props): void {
 		const { activeFontFamily: fontFamilyProps } = this.props;
 		const { activeFontFamily: fontFamilyState } = this.state;
 
-		if (fontFamilyProps !== fontFamilyState) {
+		// If active font prop has changed and state is out of date: Update font family in font manager
+		// and component state
+		if (fontFamilyProps !== prevProps.activeFontFamily && fontFamilyProps !== fontFamilyState) {
 			this.setActiveFontFamily(fontFamilyProps);
 		}
 	}
@@ -154,17 +156,13 @@ export default class FontPicker extends PureComponent<Props, State> {
 	}
 
 	/**
-	 * Set the specified font as the active font in the fontManager, update activeFontFamily in the
-	 * state and call the onChange prop function
+	 * Set the specified font as the active font in the fontManager and update activeFontFamily in the
+	 * state
 	 */
 	setActiveFontFamily(activeFontFamily: string): void {
-		const { onChange } = this.props;
-
-		this.fontManager.setActiveFont(activeFontFamily);
 		this.setState({
 			activeFontFamily,
-		});
-		onChange(this.fontManager.getActiveFont());
+		}, () => this.fontManager.setActiveFont(activeFontFamily));
 	}
 
 	// Instance of the FontManager class used for managing, downloading and applying fonts
