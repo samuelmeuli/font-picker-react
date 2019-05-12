@@ -51,8 +51,11 @@ export default class FontPicker extends PureComponent<Props, State> {
 		variants: ["regular"],
 		limit: 50,
 		sort: "alphabet",
-		onChange: () => {},
+		onChange: (): void => {},
 	};
+
+	// Instance of the FontManager class used for managing, downloading and applying fonts
+	fontManager: FontManager;
 
 	constructor(props: Props) {
 		super(props);
@@ -88,19 +91,23 @@ export default class FontPicker extends PureComponent<Props, State> {
 		this.fontManager = new FontManager(apiKey, activeFontFamily, options, onChange);
 		this.fontManager
 			.init()
-			.then(() => {
-				this.setState({
-					loadingStatus: "finished",
-				});
-			})
-			.catch((err: Error) => {
-				// On error: Log error message
-				this.setState({
-					loadingStatus: "error",
-				});
-				console.error("Error trying to fetch the list of available fonts");
-				console.error(err);
-			});
+			.then(
+				(): void => {
+					this.setState({
+						loadingStatus: "finished",
+					});
+				},
+			)
+			.catch(
+				(err: Error): void => {
+					// On error: Log error message
+					this.setState({
+						loadingStatus: "error",
+					});
+					console.error("Error trying to fetch the list of available fonts");
+					console.error(err);
+				},
+			);
 
 		// Function bindings
 		this.onClose = this.onClose.bind(this);
@@ -160,13 +167,13 @@ export default class FontPicker extends PureComponent<Props, State> {
 	 * state
 	 */
 	setActiveFontFamily(activeFontFamily: string): void {
-		this.setState({
-			activeFontFamily,
-		}, () => this.fontManager.setActiveFont(activeFontFamily));
+		this.setState(
+			{
+				activeFontFamily,
+			},
+			(): void => this.fontManager.setActiveFont(activeFontFamily),
+		);
 	}
-
-	// Instance of the FontManager class used for managing, downloading and applying fonts
-	fontManager: FontManager;
 
 	/**
 	 * Generate <ul> with all font families
@@ -179,23 +186,25 @@ export default class FontPicker extends PureComponent<Props, State> {
 		}
 		return (
 			<ul>
-				{fonts.map(font => {
-					const isActive = font.family === activeFontFamily;
-					const fontId = getFontId(font.family);
-					return (
-						<li key={fontId}>
-							<button
-								type="button"
-								id={`font-button-${fontId}${this.fontManager.selectorSuffix}`}
-								className={isActive ? "active-font" : ""}
-								onClick={this.onSelection}
-								onKeyPress={this.onSelection}
-							>
-								{font.family}
-							</button>
-						</li>
-					);
-				})}
+				{fonts.map(
+					(font): React.ReactElement => {
+						const isActive = font.family === activeFontFamily;
+						const fontId = getFontId(font.family);
+						return (
+							<li key={fontId}>
+								<button
+									type="button"
+									id={`font-button-${fontId}${this.fontManager.selectorSuffix}`}
+									className={isActive ? "active-font" : ""}
+									onClick={this.onSelection}
+									onKeyPress={this.onSelection}
+								>
+									{font.family}
+								</button>
+							</li>
+						);
+					},
+				)}
 			</ul>
 		);
 	}
@@ -226,7 +235,7 @@ export default class FontPicker extends PureComponent<Props, State> {
 		// Extract and sort font list
 		const fonts = Array.from(this.fontManager.getFonts().values());
 		if (sort === "alphabet") {
-			fonts.sort((font1: Font, font2: Font) => font1.family.localeCompare(font2.family));
+			fonts.sort((font1: Font, font2: Font): number => font1.family.localeCompare(font2.family));
 		}
 
 		// Render font picker button and attach font list to it
