@@ -29,7 +29,6 @@ interface Props {
 }
 
 interface State {
-	activeFontFamily: string;
 	expanded: boolean;
 	loadingStatus: LoadingStatus;
 }
@@ -73,7 +72,6 @@ export default class FontPicker extends PureComponent<Props, State> {
 		} = this.props;
 
 		this.state = {
-			activeFontFamily,
 			expanded: false,
 			loadingStatus: "loading",
 		};
@@ -122,11 +120,9 @@ export default class FontPicker extends PureComponent<Props, State> {
 	 */
 	componentDidUpdate(prevProps: Props): void {
 		const { activeFontFamily: fontFamilyProps } = this.props;
-		const { activeFontFamily: fontFamilyState } = this.state;
 
-		// If active font prop has changed and state is out of date: Update font family in font manager
-		// and component state
-		if (fontFamilyProps !== prevProps.activeFontFamily && fontFamilyProps !== fontFamilyState) {
+		// If active font prop has changed: Update font family in font manager and component state
+		if (fontFamilyProps !== prevProps.activeFontFamily) {
 			this.setActiveFontFamily(fontFamilyProps);
 		}
 	}
@@ -167,19 +163,15 @@ export default class FontPicker extends PureComponent<Props, State> {
 	 * state
 	 */
 	setActiveFontFamily(activeFontFamily: string): void {
-		this.setState(
-			{
-				activeFontFamily,
-			},
-			(): void => this.fontManager.setActiveFont(activeFontFamily),
-		);
+		this.fontManager.setActiveFont(activeFontFamily);
 	}
 
 	/**
 	 * Generate <ul> with all font families
 	 */
 	generateFontList(fonts: Font[]): React.ReactElement {
-		const { activeFontFamily, loadingStatus } = this.state;
+		const { activeFontFamily } = this.props;
+		const { loadingStatus } = this.state;
 
 		if (loadingStatus !== "finished") {
 			return <div />;
@@ -229,8 +221,8 @@ export default class FontPicker extends PureComponent<Props, State> {
 	}
 
 	render(): React.ReactElement {
-		const { sort } = this.props;
-		const { activeFontFamily, expanded, loadingStatus } = this.state;
+		const { activeFontFamily, sort } = this.props;
+		const { expanded, loadingStatus } = this.state;
 
 		// Extract and sort font list
 		const fonts = Array.from(this.fontManager.getFonts().values());
