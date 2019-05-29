@@ -119,11 +119,16 @@ export default class FontPicker extends PureComponent<Props, State> {
 	 * call this.setActiveFontFamily with the new font
 	 */
 	componentDidUpdate(prevProps: Props): void {
-		const { activeFontFamily: fontFamilyProps } = this.props;
+		const { activeFontFamily, onChange } = this.props;
 
 		// If active font prop has changed: Update font family in font manager and component state
-		if (fontFamilyProps !== prevProps.activeFontFamily) {
-			this.setActiveFontFamily(fontFamilyProps);
+		if (activeFontFamily !== prevProps.activeFontFamily) {
+			this.setActiveFontFamily(activeFontFamily);
+		}
+
+		// If onChange prop has changed: Update onChange function in font manager
+		if (onChange !== prevProps.onChange) {
+			this.fontManager.setOnChange(onChange);
 		}
 	}
 

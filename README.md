@@ -83,7 +83,7 @@ The following props can be passed to the `FontPicker` component:
 - **`limit`**: Maximum number of fonts to display in the list (the least popular fonts will be omitted). Default: `50`
 - **`sort`**: Sorting attribute for the font list. Possible values: `"alphabet", "popularity"`. Default: `"alphabet"`
 
-_Currently, only the `activeFontFamily` and `sort` props are reactive._
+_Currently, only the `activeFontFamily`, `onChange` and `sort` props are reactive._
 
 ## Development
 
