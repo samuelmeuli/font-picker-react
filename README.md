@@ -7,7 +7,7 @@
 - Automatic font download and generation of the required CSS selectors
 - Efficient font previews (full fonts are only downloaded on selection)
 
-→ **[Demo](https://samuelmeuli.github.io/font-picker)**
+→ **[Demo](https://font-picker.samuelmeuli.com)**
 
 _This is the React component for the [**Font Picker**](https://github.com/samuelmeuli/font-picker) library._
 
