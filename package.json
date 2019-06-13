@@ -72,19 +72,47 @@
 		"stylelint": "^10.0.1",
 		"typescript": "^3.3.4000"
 	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
+	"eslintConfig": {
+		"root": true,
+		"extends": [
+			"@samuelmeuli/eslint-config/react-typescript",
+			"prettier",
+			"prettier/@typescript-eslint"
+		],
+		"env": {
+			"browser": true,
+			"node": true
+		},
+		"rules": {
+			"import/no-extraneous-dependencies": [
+				"error",
+				{
+					"devDependencies": [
+						".storybook/**/*.js",
+						"rollup.config.js",
+						"stories/**/*.jsx"
+					]
+				}
+			],
+			"import/no-unresolved": "off",
+			"react/jsx-sort-default-props": "off"
 		}
 	},
+	"stylelint": {
+		"extends": "@samuelmeuli/stylelint-config"
+	},
+	"prettier": {
+		"printWidth": 100,
+		"trailingComma": "all"
+	},
 	"lint-staged": {
-		"*.{ts,tsx}": [
-			"yarn lint:ts",
+		"*.{js,jsx}": [
+			"yarn lint:js",
 			"yarn format",
 			"git add"
 		],
-		"*.{js,jsx}": [
-			"yarn lint:js",
+		"*.{ts,tsx}": [
+			"yarn lint:ts",
 			"yarn format",
 			"git add"
 		],
@@ -102,5 +130,10 @@
 			"yarn format",
 			"git add"
 		]
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
 	}
 }
