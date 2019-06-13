@@ -1,13 +1,12 @@
-import FontManager from "font-picker/dist/font-manager/font-manager/FontManager";
 import {
 	Category,
 	Font,
+	FontManager,
 	Options,
 	Script,
 	SortOption,
 	Variant,
-} from "font-picker/dist/font-manager/shared/types";
-import "font-picker/dist/styles.min.css";
+} from "@samuelmeuli/font-manager";
 import React, { PureComponent } from "react";
 
 type LoadingStatus = "loading" | "finished" | "error";
@@ -89,23 +88,19 @@ export default class FontPicker extends PureComponent<Props, State> {
 		this.fontManager = new FontManager(apiKey, activeFontFamily, options, onChange);
 		this.fontManager
 			.init()
-			.then(
-				(): void => {
-					this.setState({
-						loadingStatus: "finished",
-					});
-				},
-			)
-			.catch(
-				(err: Error): void => {
-					// On error: Log error message
-					this.setState({
-						loadingStatus: "error",
-					});
-					console.error("Error trying to fetch the list of available fonts");
-					console.error(err);
-				},
-			);
+			.then((): void => {
+				this.setState({
+					loadingStatus: "finished",
+				});
+			})
+			.catch((err: Error): void => {
+				// On error: Log error message
+				this.setState({
+					loadingStatus: "error",
+				});
+				console.error("Error trying to fetch the list of available fonts");
+				console.error(err);
+			});
 
 		// Function bindings
 		this.onClose = this.onClose.bind(this);
