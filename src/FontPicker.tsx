@@ -2,7 +2,9 @@ import {
 	Category,
 	Font,
 	FontManager,
+	FONT_FAMILY_DEFAULT,
 	Options,
+	OPTIONS_DEFAULTS,
 	Script,
 	SortOption,
 	Variant,
@@ -41,14 +43,14 @@ function getFontId(fontFamily: string): string {
 
 export default class FontPicker extends PureComponent<Props, State> {
 	static defaultProps = {
-		defaultFamily: "Open Sans",
-		pickerId: "",
-		families: [] as string[],
-		categories: [] as Category[],
-		scripts: ["latin"],
-		variants: ["regular"],
-		limit: 50,
-		sort: "alphabet",
+		defaultFamily: FONT_FAMILY_DEFAULT,
+		pickerId: OPTIONS_DEFAULTS.pickerId,
+		families: OPTIONS_DEFAULTS.families,
+		categories: OPTIONS_DEFAULTS.categories,
+		scripts: OPTIONS_DEFAULTS.scripts,
+		variants: OPTIONS_DEFAULTS.variants,
+		limit: OPTIONS_DEFAULTS.limit,
+		sort: OPTIONS_DEFAULTS.sort,
 		onChange: (): void => {},
 	};
 
