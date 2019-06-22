@@ -18,13 +18,13 @@ interface Props {
 	onChange: (font: Font) => void;
 
 	// Optional props
-	pickerId?: string;
-	families?: string[];
-	categories?: Category[];
-	scripts?: Script[];
-	variants?: Variant[];
-	limit?: number;
-	sort?: SortOption;
+	pickerId: string;
+	families: string[];
+	categories: Category[];
+	scripts: Script[];
+	variants: Variant[];
+	limit: number;
+	sort: SortOption;
 }
 
 interface State {
@@ -52,6 +52,11 @@ export default class FontPicker extends PureComponent<Props, State> {
 		onChange: (): void => {},
 	};
 
+	state: Readonly<State> = {
+		expanded: false,
+		loadingStatus: "loading",
+	};
+
 	// Instance of the FontManager class used for managing, downloading and applying fonts
 	fontManager: FontManager;
 
@@ -67,13 +72,9 @@ export default class FontPicker extends PureComponent<Props, State> {
 			scripts,
 			variants,
 			limit,
+			sort,
 			onChange,
 		} = this.props;
-
-		this.state = {
-			expanded: false,
-			loadingStatus: "loading",
-		};
 
 		const options: Options = {
 			pickerId,
@@ -82,6 +83,7 @@ export default class FontPicker extends PureComponent<Props, State> {
 			scripts,
 			variants,
 			limit,
+			sort,
 		};
 
 		// Initialize FontManager object and generate font list
@@ -131,21 +133,24 @@ export default class FontPicker extends PureComponent<Props, State> {
 	 * EventListener for closing the font picker when clicking anywhere outside it
 	 */
 	onClose(e: MouseEvent): void {
-		let targetElement = e.target as Node; // Clicked element
+		let targetEl = e.target as Node; // Clicked element
+		const fontPickerEl = document.getElementById(`font-picker${this.fontManager.selectorSuffix}`);
 
-		do {
-			if (
-				targetElement === document.getElementById(`font-picker${this.fontManager.selectorSuffix}`)
-			) {
-				// Click inside font picker
+		// eslint-disable-next-line no-constant-condition
+		while (true) {
+			if (targetEl === fontPickerEl) {
+				// Click inside font picker: Exit
 				return;
 			}
-			// Move up the DOM
-			targetElement = targetElement.parentNode;
-		} while (targetElement);
-
-		// Click outside font picker
-		this.toggleExpanded();
+			if (targetEl.parentNode) {
+				// Click outside font picker: Move up the DOM
+				targetEl = targetEl.parentNode;
+			} else {
+				// DOM root is reached: Toggle picker, exit
+				this.toggleExpanded();
+				return;
+			}
+		}
 	}
 
 	/**
@@ -154,6 +159,9 @@ export default class FontPicker extends PureComponent<Props, State> {
 	onSelection(e: React.MouseEvent | React.KeyboardEvent): void {
 		const target = e.target as HTMLButtonElement;
 		const activeFontFamily = target.textContent;
+		if (!activeFontFamily) {
+			throw Error(`Missing font family in clicked font button`);
+		}
 		this.setActiveFontFamily(activeFontFamily);
 		this.toggleExpanded();
 	}
