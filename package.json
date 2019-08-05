@@ -45,7 +45,7 @@
 		"release": "np"
 	},
 	"dependencies": {
-		"@samuelmeuli/font-manager": "^1.0.0"
+		"@samuelmeuli/font-manager": "^1.1.0"
 	},
 	"peerDependencies": {
 		"@types/react": "^16.8.10",
