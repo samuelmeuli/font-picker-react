@@ -22,18 +22,17 @@
 		"react-component"
 	],
 	"main": "./dist/FontPicker.js",
-	"module": "./dist/FontPicker.es.js",
 	"types": "./dist/FontPicker.d.ts",
 	"files": [
 		"./dist/"
 	],
 	"scripts": {
-		"start": "npm-run-all build:rollup --parallel start:*",
-		"start:rollup": "rollup --config --sourcemap --watch",
+		"start": "npm-run-all build:clean build:ts --parallel start:*",
+		"start:ts": "babel ./src/FontPicker.tsx --out-file ./dist/FontPicker.js --watch",
 		"start:storybook": "start-storybook --port 3000",
 		"build": "run-s build:*",
-		"build:clean": "rm -rf ./dist/",
-		"build:rollup": "rollup --config",
+		"build:clean": "rm -rf ./dist/ && mkdir ./dist/",
+		"build:ts": "babel ./src/FontPicker.tsx --out-file ./dist/FontPicker.js",
 		"build:types": "tsc --emitDeclarationOnly",
 		"format": "prettier --write",
 		"lint:css": "stylelint --fix --max-warnings 0",
@@ -52,6 +51,7 @@
 		"react": "^16.0.0"
 	},
 	"devDependencies": {
+		"@babel/cli": "^7.5.5",
 		"@babel/core": "^7.5.5",
 		"@babel/plugin-proposal-class-properties": "^7.5.5",
 		"@babel/preset-env": "^7.5.5",
@@ -64,7 +64,7 @@
 		"@types/react": "^16.8.10",
 		"@typescript-eslint/eslint-plugin": "^1.5.0",
 		"@typescript-eslint/parser": "^1.5.0",
-		"babel-loader": "^8.0.4",
+		"babel-loader": "^8.0.6",
 		"eslint": "^5.15.3",
 		"eslint-config-airbnb": "^17.1.0",
 		"eslint-config-prettier": "^6.0.0",
@@ -78,12 +78,23 @@
 		"prettier": "^1.16.4",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
-		"rollup": "^1.7.4",
-		"rollup-plugin-auto-external": "^2.0.0",
-		"rollup-plugin-babel": "^4.3.3",
-		"rollup-plugin-node-resolve": "^5.2.0",
 		"stylelint": "^10.1.0",
 		"typescript": "^3.5.3"
+	},
+	"babel": {
+		"presets": [
+			"@babel/preset-typescript",
+			"@babel/react",
+			[
+				"@babel/preset-env",
+				{
+					"modules": false
+				}
+			]
+		],
+		"plugins": [
+			"@babel/plugin-proposal-class-properties"
+		]
 	},
 	"eslintConfig": {
 		"root": true,
@@ -102,7 +113,6 @@
 				{
 					"devDependencies": [
 						"./.storybook/**/*.js",
-						"./rollup.config.js",
 						"./stories/**/*.jsx"
 					]
 				}
