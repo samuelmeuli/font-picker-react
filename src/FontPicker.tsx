@@ -187,17 +187,17 @@ export default class FontPicker extends PureComponent<Props, State> {
 			return <div />;
 		}
 		return (
-			<ul>
+			<ul className="font-list">
 				{fonts.map(
 					(font): React.ReactElement => {
 						const isActive = font.family === activeFontFamily;
 						const fontId = getFontId(font.family);
 						return (
-							<li key={fontId}>
+							<li key={fontId} className="font-list-item">
 								<button
 									type="button"
 									id={`font-button-${fontId}${this.fontManager.selectorSuffix}`}
-									className={isActive ? "active-font" : ""}
+									className={`font-button ${isActive ? "active-font" : ""}`}
 									onClick={this.onSelection}
 									onKeyPress={this.onSelection}
 								>
