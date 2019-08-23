@@ -44,13 +44,14 @@
 		"release": "np"
 	},
 	"dependencies": {
-		"@samuelmeuli/font-manager": "^1.1.1"
+		"@samuelmeuli/font-manager": "^1.2.0"
 	},
 	"peerDependencies": {
 		"@types/react": "^16.8.10",
 		"react": "^16.0.0"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.5.5",
 		"@samuelmeuli/eslint-config": "^3.0.1",
 		"@samuelmeuli/stylelint-config": "^1.0.2",
 		"@samuelmeuli/tsconfig": "^0.1.1",
