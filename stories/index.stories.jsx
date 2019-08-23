@@ -1,8 +1,9 @@
+import "./styles.css";
+
 import { storiesOf } from "@storybook/react";
 import React, { useState } from "react";
 
-import FontPicker from "../dist/FontPicker";
-import "./styles.css";
+import FontPicker from "../dist/FontPicker.es";
 
 const API_KEY = "AIzaSyAOkdDlx49HCSBdu86oe8AD1Q7piIxlR6k";
 

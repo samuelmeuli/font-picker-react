@@ -22,24 +22,24 @@
 		"react-component"
 	],
 	"main": "./dist/FontPicker.js",
+	"module": "./dist/FontPicker.es.js",
 	"types": "./dist/FontPicker.d.ts",
 	"files": [
 		"./dist/"
 	],
 	"scripts": {
 		"start": "npm-run-all build:clean build:ts --parallel start:*",
-		"start:ts": "babel ./src/FontPicker.tsx --out-file ./dist/FontPicker.js --watch",
+		"start:ts": "rollup --config --sourcemap --watch",
 		"start:storybook": "start-storybook --port 3000",
 		"build": "run-s build:*",
 		"build:clean": "rm -rf ./dist/ && mkdir ./dist/",
-		"build:ts": "babel ./src/FontPicker.tsx --out-file ./dist/FontPicker.js",
-		"build:types": "tsc --emitDeclarationOnly",
+		"build:ts": "rollup --config",
+		"test": "tsc --noEmit",
 		"format": "prettier --write",
 		"lint:css": "stylelint --fix --max-warnings 0",
 		"lint:scss": "stylelint --fix --max-warnings 0 --syntax scss",
 		"lint:js": "eslint --ext .js,.jsx --fix --max-warnings 0",
 		"lint:ts": "eslint --ext .ts,.tsx --fix --max-warnings 0",
-		"typecheck": "tsc --noEmit",
 		"version": "yarn build",
 		"release": "np"
 	},
@@ -51,12 +51,6 @@
 		"react": "^16.0.0"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.5.5",
-		"@babel/core": "^7.5.5",
-		"@babel/plugin-proposal-class-properties": "^7.5.5",
-		"@babel/preset-env": "^7.5.5",
-		"@babel/preset-react": "^7.0.0",
-		"@babel/preset-typescript": "^7.3.3",
 		"@samuelmeuli/eslint-config": "^3.0.1",
 		"@samuelmeuli/stylelint-config": "^1.0.2",
 		"@samuelmeuli/tsconfig": "^0.1.1",
@@ -80,23 +74,10 @@
 		"prettier": "^1.16.4",
 		"react": "^16.9.0",
 		"react-dom": "^16.9.0",
+		"rollup": "^1.19.4",
+		"rollup-plugin-typescript2": "^0.22.1",
 		"stylelint": "^10.1.0",
 		"typescript": "^3.5.3"
-	},
-	"babel": {
-		"presets": [
-			"@babel/preset-typescript",
-			"@babel/react",
-			[
-				"@babel/preset-env",
-				{
-					"modules": false
-				}
-			]
-		],
-		"plugins": [
-			"@babel/plugin-proposal-class-properties"
-		]
 	},
 	"eslintConfig": {
 		"root": true,
@@ -115,6 +96,7 @@
 				{
 					"devDependencies": [
 						"./.storybook/**/*.js",
+						"./rollup.config.js",
 						"./stories/**/*.jsx"
 					]
 				}
@@ -157,7 +139,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "yarn typecheck && lint-staged"
+			"pre-commit": "yarn test && lint-staged"
 		}
 	}
 }
