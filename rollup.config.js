@@ -15,9 +15,5 @@ export default {
 		},
 	],
 	external: ["@samuelmeuli/font-manager", "react"],
-	plugins: [
-		typescript({
-			cacheRoot: "./node_modules/.cache/rollup-plugin-typescript2/",
-		}),
-	],
+	plugins: [typescript()],
 };
