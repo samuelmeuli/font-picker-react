@@ -44,48 +44,46 @@
 		"release": "np"
 	},
 	"dependencies": {
-		"@samuelmeuli/font-manager": "^1.2.0"
+		"@samuelmeuli/font-manager": "^1.3.1"
 	},
 	"peerDependencies": {
-		"@types/react": "^16.8.10",
+		"@types/react": "^16.0.0",
 		"react": "^16.0.0"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.5.5",
-		"@samuelmeuli/eslint-config": "^3.0.1",
+		"@babel/core": "^7.7.2",
+		"@samuelmeuli/eslint-config": "^4.0.1",
 		"@samuelmeuli/stylelint-config": "^1.0.2",
 		"@samuelmeuli/tsconfig": "^0.2.0",
-		"@storybook/react": "^5.1.11",
-		"@types/react": "^16.9.2",
-		"@typescript-eslint/eslint-plugin": "^2.0.0",
-		"@typescript-eslint/parser": "^2.0.0",
+		"@storybook/react": "^5.2.6",
+		"@types/react": "^16.9.11",
+		"@typescript-eslint/eslint-plugin": "^2.7.0",
+		"@typescript-eslint/parser": "^2.7.0",
 		"babel-loader": "^8.0.6",
-		"eslint": "6.1.0",
+		"eslint": "6.6.0",
 		"eslint-config-airbnb": "18.0.1",
-		"eslint-config-prettier": "^6.1.0",
+		"eslint-config-prettier": "^6.5.0",
 		"eslint-plugin-import": "^2.18.2",
 		"eslint-plugin-jsx-a11y": "^6.2.3",
 		"eslint-plugin-react": "^7.14.3",
 		"eslint-plugin-react-hooks": "^1.7.0",
 		"eslint-plugin-simple-import-sort": "^4.0.0",
-		"husky": "^3.0.4",
-		"lint-staged": "^9.2.3",
+		"husky": "^3.0.9",
+		"lint-staged": "^9.4.3",
 		"np": "~5.0.0",
 		"npm-run-all": "^4.1.3",
-		"prettier": "^1.16.4",
-		"react": "^16.9.0",
-		"react-dom": "^16.9.0",
-		"rollup": "^1.19.4",
-		"rollup-plugin-typescript2": "^0.24.3",
+		"prettier": "^1.19.1",
+		"react": "^16.11.0",
+		"react-dom": "^16.11.0",
+		"rollup": "^1.27.0",
+		"rollup-plugin-typescript2": "^0.25.2",
 		"stylelint": "^11.0.0",
-		"typescript": "^3.5.3"
+		"typescript": "^3.7.2"
 	},
 	"eslintConfig": {
 		"root": true,
 		"extends": [
-			"@samuelmeuli/eslint-config/react-typescript",
-			"prettier",
-			"prettier/@typescript-eslint"
+			"@samuelmeuli/eslint-config/typescript-react"
 		],
 		"env": {
 			"browser": true,
