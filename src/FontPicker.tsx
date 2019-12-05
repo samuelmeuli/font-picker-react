@@ -54,6 +54,7 @@ export default class FontPicker extends PureComponent<Props, State> {
 		variants: OPTIONS_DEFAULTS.variants,
 		limit: OPTIONS_DEFAULTS.limit,
 		sort: OPTIONS_DEFAULTS.sort,
+		// eslint-disable-next-line @typescript-eslint/no-empty-function
 		onChange: (): void => {},
 	};
 
