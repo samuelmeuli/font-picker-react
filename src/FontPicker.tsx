@@ -25,6 +25,7 @@ interface Props {
 	categories: Category[];
 	scripts: Script[];
 	variants: Variant[];
+	filter: (font: Font) => boolean;
 	limit: number;
 	sort: SortOption;
 }
@@ -52,6 +53,7 @@ export default class FontPicker extends PureComponent<Props, State> {
 		categories: OPTIONS_DEFAULTS.categories,
 		scripts: OPTIONS_DEFAULTS.scripts,
 		variants: OPTIONS_DEFAULTS.variants,
+		filter: OPTIONS_DEFAULTS.filter,
 		limit: OPTIONS_DEFAULTS.limit,
 		sort: OPTIONS_DEFAULTS.sort,
 		// eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -74,6 +76,7 @@ export default class FontPicker extends PureComponent<Props, State> {
 			categories,
 			scripts,
 			variants,
+			filter,
 			limit,
 			sort,
 			onChange,
@@ -85,6 +88,7 @@ export default class FontPicker extends PureComponent<Props, State> {
 			categories,
 			scripts,
 			variants,
+			filter,
 			limit,
 			sort,
 		};

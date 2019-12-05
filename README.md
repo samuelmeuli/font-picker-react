@@ -36,29 +36,29 @@ import React, { Component } from "react";
 import FontPicker from "font-picker-react";
 
 export default class ExampleComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeFontFamily: "Open Sans",
-    };
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			activeFontFamily: "Open Sans",
+		};
+	}
 
-  render() {
-    return (
-      <div>
-        <FontPicker
-          apiKey="YOUR_API_KEY"
-          activeFontFamily={this.state.activeFontFamily}
-          onChange={nextFont =>
-            this.setState({
-              activeFontFamily: nextFont.family,
-            })
-          }
-        />
-        <p className="apply-font">The font will be applied to this text.</p>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div>
+				<FontPicker
+					apiKey="YOUR_API_KEY"
+					activeFontFamily={this.state.activeFontFamily}
+					onChange={nextFont =>
+						this.setState({
+							activeFontFamily: nextFont.family,
+						})
+					}
+				/>
+				<p className="apply-font">The font will be applied to this text.</p>
+			</div>
+		);
+	}
 }
 ```
 
@@ -78,8 +78,9 @@ The following props can be passed to the `FontPicker` component:
 - **`pickerId`**: If you have multiple font pickers on your site, you need to give them unique IDs which must be provided as a prop and appended to the `.apply-font` class names. Example: If `pickerId="main"`, use `className="apply-font-main"`
 - **`families`**: If only specific fonts shall appear in the list, specify their names in an array. Default: All font families
 - **`categories`**: Array of font categories to include in the list. Possible values: `"sans-serif", "serif", "display", "handwriting", "monospace"`. Default: All categories
-- **`scripts`**: Array of scripts which the fonts must include and which will be downloaded on font selection. Example: `["latin", "greek", "hebrew"]` (see [all possible values](https://github.com/samuelmeuli/font-picker/blob/master/src/shared/types.ts)). Default: `["latin"]`
-- **`variants`**: Array of variants which the fonts must include and which will be downloaded on font selection. Example: `["regular", "italic", "700", "700italic"]` (see [all possible values](https://github.com/samuelmeuli/font-picker/blob/master/src/shared/types.ts)). Default: `["regular"]`
+- **`scripts`**: Array of scripts which the fonts must include and which will be downloaded on font selection. Default: `["latin"]`. Example: `["latin", "greek", "hebrew"]` (see [all possible values](https://github.com/samuelmeuli/font-picker/blob/master/src/shared/types.ts))
+- **`variants`**: Array of variants which the fonts must include and which will be downloaded on font selection. Default: `["regular"]`. Example: `["regular", "italic", "700", "700italic"]` (see [all possible values](https://github.com/samuelmeuli/font-picker/blob/master/src/shared/types.ts))
+- **`filter`**: Function which must evaluate to `true` for a font to be included in the list. Default: `font => true`. Example: If `font => font.family.toLowerCase().startsWith("m")`, only fonts whose names begin with "M" will be in the list
 - **`limit`**: Maximum number of fonts to display in the list (the least popular fonts will be omitted). Default: `50`
 - **`sort`**: Sorting attribute for the font list. Possible values: `"alphabet", "popularity"`. Default: `"alphabet"`
 
