@@ -49,7 +49,7 @@ export default class ExampleComponent extends Component {
 				<FontPicker
 					apiKey="YOUR_API_KEY"
 					activeFontFamily={this.state.activeFontFamily}
-					onChange={nextFont =>
+					onChange={(nextFont) =>
 						this.setState({
 							activeFontFamily: nextFont.family,
 						})

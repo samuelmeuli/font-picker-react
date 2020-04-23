@@ -14,7 +14,7 @@ function OnePicker() {
 			<FontPicker
 				apiKey={API_KEY}
 				activeFontFamily={activeFontFamily}
-				onChange={nextFont => setActiveFontFamily(nextFont.family)}
+				onChange={(nextFont) => setActiveFontFamily(nextFont.family)}
 			/>
 			<p className="apply-font">The font will be applied to this text.</p>
 		</div>
@@ -30,7 +30,7 @@ function TwoPickers() {
 				<FontPicker
 					apiKey={API_KEY}
 					activeFontFamily={activeFontFamily1}
-					onChange={nextFont => setActiveFontFamily1(nextFont.family)}
+					onChange={(nextFont) => setActiveFontFamily1(nextFont.family)}
 					pickerId="1"
 				/>
 				<p className="apply-font-1">The font will be applied to this text.</p>
@@ -39,7 +39,7 @@ function TwoPickers() {
 				<FontPicker
 					apiKey={API_KEY}
 					activeFontFamily={activeFontFamily2}
-					onChange={nextFont => setActiveFontFamily2(nextFont.family)}
+					onChange={(nextFont) => setActiveFontFamily2(nextFont.family)}
 					pickerId="2"
 				/>
 				<p className="apply-font-2">The font will be applied to this text.</p>

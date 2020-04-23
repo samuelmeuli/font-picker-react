@@ -15,7 +15,7 @@ addParameters({
 function loadStories() {
 	// Import all story files
 	const imports = require.context("../stories", true, /.stories.jsx?$/);
-	imports.keys().forEach(filename => imports(filename));
+	imports.keys().forEach((filename) => imports(filename));
 }
 
 configure(loadStories, module);

@@ -35,11 +35,12 @@
 		"build:clean": "rm -rf ./dist/ && mkdir ./dist/",
 		"build:ts": "rollup --config",
 		"test": "tsc --noEmit",
-		"format": "prettier --write",
-		"lint:css": "stylelint --fix --max-warnings 0",
-		"lint:scss": "stylelint --fix --max-warnings 0 --syntax scss",
-		"lint:js": "eslint --ext .js,.jsx --fix --max-warnings 0",
-		"lint:ts": "eslint --ext .ts,.tsx --fix --max-warnings 0",
+		"lint:css": "stylelint --ignore-path ./.gitignore --max-warnings 0 '**/*.{css,sass,scss}'",
+		"lint:css:fix": "yarn lint:css --fix",
+		"lint:ts": "eslint --ext .ts,.tsx --ignore-path ./.gitignore --max-warnings 0 '**/*.{ts,tsx}'",
+		"lint:ts:fix": "yarn lint:ts --fix",
+		"format": "prettier --ignore-path ./.gitignore --list-different '**/*.{css,html,js,json,jsx,less,md,scss,ts,tsx,vue,yaml,yml}'",
+		"format:fix": "yarn format --write",
 		"version": "yarn build",
 		"release": "np"
 	},
@@ -51,41 +52,39 @@
 		"react": "^16.0.0"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.7.4",
-		"@samuelmeuli/eslint-config": "^5.0.2",
-		"@samuelmeuli/prettier-config": "^1.0.0",
-		"@samuelmeuli/stylelint-config": "^1.0.2",
-		"@samuelmeuli/tsconfig": "^0.2.0",
-		"@storybook/react": "^5.2.8",
-		"@types/react": "^16.9.15",
-		"@typescript-eslint/eslint-plugin": "^2.10.0",
-		"@typescript-eslint/parser": "^2.10.0",
-		"babel-loader": "^8.0.6",
-		"eslint": "6.7.2",
-		"eslint-config-airbnb": "18.0.1",
-		"eslint-config-prettier": "^6.7.0",
-		"eslint-plugin-import": "^2.18.2",
+		"@babel/core": "^7.9.0",
+		"@samuelmeuli/eslint-config": "^6.0.0",
+		"@samuelmeuli/prettier-config": "^2.0.1",
+		"@samuelmeuli/stylelint-config": "^3.0.0",
+		"@samuelmeuli/tsconfig": "^1.0.0",
+		"@storybook/react": "^5.3.18",
+		"@types/react": "^16.9.34",
+		"@typescript-eslint/eslint-plugin": "^2.29.0",
+		"@typescript-eslint/parser": "^2.29.0",
+		"babel-loader": "^8.1.0",
+		"eslint": "6.8.0",
+		"eslint-config-airbnb": "18.1.0",
+		"eslint-config-prettier": "^6.11.0",
+		"eslint-plugin-import": "^2.20.2",
 		"eslint-plugin-jsx-a11y": "^6.2.3",
-		"eslint-plugin-react": "^7.17.0",
-		"eslint-plugin-react-hooks": "^1.7.0",
-		"eslint-plugin-simple-import-sort": "^5.0.0",
-		"husky": "^3.1.0",
-		"lint-staged": "^9.5.0",
-		"np": "^5.2.1",
+		"eslint-plugin-react": "^7.19.0",
+		"eslint-plugin-react-hooks": "^2.5.1",
+		"np": "^6.2.2",
 		"npm-run-all": "^4.1.3",
-		"prettier": "^1.19.1",
-		"react": "^16.12.0",
-		"react-dom": "^16.12.0",
-		"rollup": "^1.27.8",
-		"rollup-plugin-typescript2": "^0.25.3",
-		"stylelint": "^11.0.0",
-		"typescript": "^3.7.3"
+		"prettier": "^2.0.5",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"rollup": "^1.32.1",
+		"rollup-plugin-typescript2": "^0.27.0",
+		"stylelint": "^12.0.1",
+		"typescript": "^3.8.3"
 	},
+	"browserslist": [
+		"defaults"
+	],
 	"eslintConfig": {
 		"root": true,
-		"extends": [
-			"@samuelmeuli/eslint-config/typescript-react"
-		],
+		"extends": "@samuelmeuli/eslint-config/typescript-react",
 		"env": {
 			"browser": true,
 			"node": true
@@ -107,36 +106,5 @@
 	"stylelint": {
 		"extends": "@samuelmeuli/stylelint-config"
 	},
-	"prettier": "@samuelmeuli/prettier-config",
-	"lint-staged": {
-		"*.{js,jsx}": [
-			"yarn lint:js",
-			"yarn format",
-			"git add"
-		],
-		"*.{ts,tsx}": [
-			"yarn lint:ts",
-			"yarn format",
-			"git add"
-		],
-		"*.css": [
-			"yarn lint:css",
-			"yarn format",
-			"git add"
-		],
-		"*.scss": [
-			"yarn lint:scss",
-			"yarn format",
-			"git add"
-		],
-		"*.{json,md,yml}": [
-			"yarn format",
-			"git add"
-		]
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "yarn test && lint-staged"
-		}
-	}
+	"prettier": "@samuelmeuli/prettier-config"
 }
