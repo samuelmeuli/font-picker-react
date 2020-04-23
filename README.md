@@ -73,8 +73,8 @@ When the user selects a font, it will automatically be downloaded and applied to
 The following props can be passed to the `FontPicker` component:
 
 - **`apiKey` (required)**: Google API key
-- **`activeFontFamily` (required)**: Font that should be selected in the font picker and applied to the text. Should be stored in the component state and updated using `onChange`
-- **`onChange` (required)**: Function which is executed when the user changes the active font. This function should update `activeFontFamily` in the component state
+- **`activeFontFamily`**: Font that should be selected in the font picker and applied to the text. Should be stored in the component state and updated using `onChange`
+- **`onChange`**: Function which is executed when the user changes the active font. This function should update `activeFontFamily` in the component state
 - **`pickerId`**: If you have multiple font pickers on your site, you need to give them unique IDs which must be provided as a prop and appended to the `.apply-font` class names. Example: If `pickerId="main"`, use `className="apply-font-main"`
 - **`families`**: If only specific fonts shall appear in the list, specify their names in an array. Default: All font families
 - **`categories`**: Array of font categories to include in the list. Possible values: `"sans-serif", "serif", "display", "handwriting", "monospace"`. Default: All categories

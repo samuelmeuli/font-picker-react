@@ -16,10 +16,10 @@ type LoadingStatus = "loading" | "finished" | "error";
 interface Props {
 	// Required props
 	apiKey: string;
-	activeFontFamily: string;
-	onChange: (font: Font) => void;
 
 	// Optional props
+	activeFontFamily: string;
+	onChange: (font: Font) => void;
 	pickerId: string;
 	families: string[];
 	categories: Category[];
@@ -47,7 +47,8 @@ export default class FontPicker extends PureComponent<Props, State> {
 	fontManager: FontManager;
 
 	static defaultProps = {
-		defaultFamily: FONT_FAMILY_DEFAULT,
+		activeFontFamily: FONT_FAMILY_DEFAULT,
+		onChange: (): void => {}, // eslint-disable-line @typescript-eslint/no-empty-function
 		pickerId: OPTIONS_DEFAULTS.pickerId,
 		families: OPTIONS_DEFAULTS.families,
 		categories: OPTIONS_DEFAULTS.categories,
@@ -56,8 +57,6 @@ export default class FontPicker extends PureComponent<Props, State> {
 		filter: OPTIONS_DEFAULTS.filter,
 		limit: OPTIONS_DEFAULTS.limit,
 		sort: OPTIONS_DEFAULTS.sort,
-		// eslint-disable-next-line @typescript-eslint/no-empty-function
-		onChange: (): void => {},
 	};
 
 	state: Readonly<State> = {
