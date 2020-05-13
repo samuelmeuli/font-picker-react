@@ -92,8 +92,12 @@ export default class FontPicker extends PureComponent<Props, State> {
 			sort,
 		};
 
-		// Initialize FontManager object and generate font list
+		// Initialize FontManager object
 		this.fontManager = new FontManager(apiKey, activeFontFamily, options, onChange);
+	}
+
+	componentDidMount = (): void => {
+		// Generate font list
 		this.fontManager
 			.init()
 			.then((): void => {
@@ -109,7 +113,7 @@ export default class FontPicker extends PureComponent<Props, State> {
 				console.error("Error trying to fetch the list of available fonts");
 				console.error(err);
 			});
-	}
+	};
 
 	/**
 	 * After every component update, check whether the activeFontFamily prop has changed. If so,
