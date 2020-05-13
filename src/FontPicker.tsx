@@ -109,19 +109,13 @@ export default class FontPicker extends PureComponent<Props, State> {
 				console.error("Error trying to fetch the list of available fonts");
 				console.error(err);
 			});
-
-		// Function bindings
-		this.onClose = this.onClose.bind(this);
-		this.onSelection = this.onSelection.bind(this);
-		this.setActiveFontFamily = this.setActiveFontFamily.bind(this);
-		this.toggleExpanded = this.toggleExpanded.bind(this);
 	}
 
 	/**
 	 * After every component update, check whether the activeFontFamily prop has changed. If so,
 	 * call this.setActiveFontFamily with the new font
 	 */
-	componentDidUpdate(prevProps: Props): void {
+	componentDidUpdate = (prevProps: Props): void => {
 		const { activeFontFamily, onChange } = this.props;
 
 		// If active font prop has changed: Update font family in font manager and component state
@@ -133,12 +127,12 @@ export default class FontPicker extends PureComponent<Props, State> {
 		if (onChange !== prevProps.onChange) {
 			this.fontManager.setOnChange(onChange);
 		}
-	}
+	};
 
 	/**
 	 * EventListener for closing the font picker when clicking anywhere outside it
 	 */
-	onClose(e: MouseEvent): void {
+	onClose = (e: MouseEvent): void => {
 		let targetEl = e.target as Node; // Clicked element
 		const fontPickerEl = document.getElementById(`font-picker${this.fontManager.selectorSuffix}`);
 
@@ -157,12 +151,12 @@ export default class FontPicker extends PureComponent<Props, State> {
 				return;
 			}
 		}
-	}
+	};
 
 	/**
 	 * Update the active font on font button click
 	 */
-	onSelection(e: React.MouseEvent | KeyboardEvent): void {
+	onSelection = (e: React.MouseEvent | KeyboardEvent): void => {
 		const target = e.target as HTMLButtonElement;
 		const activeFontFamily = target.textContent;
 		if (!activeFontFamily) {
@@ -170,20 +164,20 @@ export default class FontPicker extends PureComponent<Props, State> {
 		}
 		this.setActiveFontFamily(activeFontFamily);
 		this.toggleExpanded();
-	}
+	};
 
 	/**
 	 * Set the specified font as the active font in the fontManager and update activeFontFamily in the
 	 * state
 	 */
-	setActiveFontFamily(activeFontFamily: string): void {
+	setActiveFontFamily = (activeFontFamily: string): void => {
 		this.fontManager.setActiveFont(activeFontFamily);
-	}
+	};
 
 	/**
 	 * Generate <ul> with all font families
 	 */
-	generateFontList(fonts: Font[]): ReactElement {
+	generateFontList = (fonts: Font[]): ReactElement => {
 		const { activeFontFamily } = this.props;
 		const { loadingStatus } = this.state;
 
@@ -213,12 +207,12 @@ export default class FontPicker extends PureComponent<Props, State> {
 				)}
 			</ul>
 		);
-	}
+	};
 
 	/**
 	 * Expand/collapse the picker's font list
 	 */
-	toggleExpanded(): void {
+	toggleExpanded = (): void => {
 		const { expanded } = this.state;
 
 		if (expanded) {
@@ -232,9 +226,9 @@ export default class FontPicker extends PureComponent<Props, State> {
 			});
 			document.addEventListener("click", this.onClose);
 		}
-	}
+	};
 
-	render(): ReactElement {
+	render = (): ReactElement => {
 		const { activeFontFamily, sort } = this.props;
 		const { expanded, loadingStatus } = this.state;
 
@@ -262,5 +256,5 @@ export default class FontPicker extends PureComponent<Props, State> {
 				{loadingStatus === "finished" && this.generateFontList(fonts)}
 			</div>
 		);
-	}
+	};
 }
