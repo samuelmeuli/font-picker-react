@@ -1,6 +1,6 @@
 {
 	"name": "font-picker-react",
-	"version": "3.5.1",
+	"version": "3.5.2",
 	"description": "Font selector component for Google Fonts",
 	"author": {
 		"name": "Samuel Meuli",
